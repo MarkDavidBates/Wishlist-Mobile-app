@@ -1,5 +1,9 @@
 package org.setu.wishlist.console.models
 
-class WishlistModel {
+data class WishlistModel(var title: String = "",
+                         var description: String = "",
+                         var attendees: String = "",
+                         var cost: String = ""){
+
 
 }

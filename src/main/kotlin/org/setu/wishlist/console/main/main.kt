@@ -1,13 +1,12 @@
 package org.setu.wishlist.console.main
 
 import mu.KotlinLogging
+import org.setu.wishlist.console.models.WishlistModel
 
 private val logger = KotlinLogging.logger {}
+val wishlist = WishlistModel()
 
-var title = ""
-var description = ""
-var attendees = ""
-var cost = ""
+
 fun main(args: Array<String>){
     logger.info { "Launching Birthday Wishlist App" }
 
@@ -54,19 +53,19 @@ fun createWishlist(){
         |===================================""".trimMargin())
 
     println("title: ")
-    title = readLine()!!
+    wishlist.title = readLine()!!
     println("description: ")
-    description = readLine()!!
+    wishlist.description = readLine()!!
     println("attendees: ")
-    attendees = readLine()!!
+    wishlist.attendees = readLine()!!
     println("estimated cost: ")
-    cost = readLine()!!
+    wishlist.cost = readLine()!!
 
     println("""===================================
-        |= TITLE: $title                   
-        |= DESCRIPTION: $description       
-        |= ATTENDEES: $attendees           
-        |= COST: $cost                     
+        |= TITLE: ${wishlist.title}                   
+        |= DESCRIPTION: ${wishlist.description}       
+        |= ATTENDEES: ${wishlist.attendees}           
+        |= COST: ${wishlist.cost}                     
         |===================================""".trimMargin())
 }
 
@@ -76,19 +75,19 @@ fun updateWishlist(){
         |===================================""".trimMargin())
 
     println("title: ")
-    title = readLine()!!
+    wishlist.title = readLine()!!
     println("description: ")
-    description = readLine()!!
+    wishlist.description = readLine()!!
     println("attendees: ")
-    attendees = readLine()!!
+    wishlist.attendees = readLine()!!
     println("estimated cost: ")
-    cost = readLine()!!
+    wishlist.cost = readLine()!!
 
     println("""===================================
-        |= TITLE: $title                   
-        |= DESCRIPTION: $description       
-        |= ATTENDEES: $attendees           
-        |= COST: $cost                     
+        |= TITLE: ${wishlist.title}                   
+        |= DESCRIPTION: ${wishlist.description}       
+        |= ATTENDEES: ${wishlist.attendees}           
+        |= COST: ${wishlist.cost}                     
         |===================================""".trimMargin())
 
 }
