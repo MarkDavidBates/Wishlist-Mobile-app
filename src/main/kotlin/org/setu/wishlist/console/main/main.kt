@@ -12,6 +12,7 @@ fun main(args: Array<String>){
         input = menu()
         when(input){
             1 -> createWishlist()
+            2 -> updateWishlist()
             -1 -> println("exiting, goodbye!")
         }
         println()
@@ -40,6 +41,10 @@ fun menu() : Int {
 }
 
 fun createWishlist(){
+    println("""===================================
+        |=         CREATE WISHLIST         =
+        |===================================""".trimMargin())
+
     var title: String
     var description: String
     var attendees: String
@@ -53,4 +58,25 @@ fun createWishlist(){
     attendees = readLine()!!
     println("estimated cost: ")
     cost = readLine()!!.toInt()
+}
+
+fun updateWishlist(){
+    println("""===================================
+        |=         UPDATE WISHLIST         =
+        |===================================""".trimMargin())
+
+}
+
+fun deleteWishlist(){
+    println("""===================================
+        |=         DELETE WISHLIST         =
+        |===================================""".trimMargin())
+
+}
+
+fun listWishlists(){
+    println("""===================================
+        |=       LIST ALL WISHLISTS        =
+        |===================================""".trimMargin())
+
 }
