@@ -83,7 +83,7 @@ fun createWishlist(){
 fun updateWishlist(){
 
     var searchId = getId()
-    var wishlist = search(searchId)
+    val wishlist = search(searchId)
 
     println("""===================================
         |=         UPDATE WISHLIST         =
