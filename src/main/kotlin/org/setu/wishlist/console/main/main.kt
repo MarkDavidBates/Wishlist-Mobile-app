@@ -4,6 +4,10 @@ import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger {}
 
+var title = ""
+var description = ""
+var attendees = ""
+var cost = ""
 fun main(args: Array<String>){
     logger.info { "Launching Birthday Wishlist App" }
 
@@ -13,6 +17,8 @@ fun main(args: Array<String>){
         when(input){
             1 -> createWishlist()
             2 -> updateWishlist()
+            3 -> deleteWishlist()
+            4 -> listWishlists()
             -1 -> println("exiting, goodbye!")
         }
         println()
@@ -35,8 +41,10 @@ fun menu() : Int {
     println()
     print("==> ")
     input = readLine()!!
-    option = input.toInt()
-
+    option = if (input.toIntOrNull() != null && !input.isEmpty())
+        input.toInt()
+    else
+        -9
     return option
 }
 
@@ -45,10 +53,27 @@ fun createWishlist(){
         |=         CREATE WISHLIST         =
         |===================================""".trimMargin())
 
-    var title: String
-    var description: String
-    var attendees: String
-    var cost: Int
+    println("title: ")
+    title = readLine()!!
+    println("description: ")
+    description = readLine()!!
+    println("attendees: ")
+    attendees = readLine()!!
+    println("estimated cost: ")
+    cost = readLine()!!
+
+    println("""===================================
+        |= TITLE: $title                   
+        |= DESCRIPTION: $description       
+        |= ATTENDEES: $attendees           
+        |= COST: $cost                     
+        |===================================""".trimMargin())
+}
+
+fun updateWishlist(){
+    println("""===================================
+        |=         UPDATE WISHLIST         =
+        |===================================""".trimMargin())
 
     println("title: ")
     title = readLine()!!
@@ -57,12 +82,13 @@ fun createWishlist(){
     println("attendees: ")
     attendees = readLine()!!
     println("estimated cost: ")
-    cost = readLine()!!.toInt()
-}
+    cost = readLine()!!
 
-fun updateWishlist(){
     println("""===================================
-        |=         UPDATE WISHLIST         =
+        |= TITLE: $title                   
+        |= DESCRIPTION: $description       
+        |= ATTENDEES: $attendees           
+        |= COST: $cost                     
         |===================================""".trimMargin())
 
 }
