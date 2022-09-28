@@ -1,11 +1,12 @@
 package org.setu.wishlist.console.main
 
 import mu.KotlinLogging
+import org.setu.wishlist.console.models.WishlistMemStore
 import org.setu.wishlist.console.models.WishlistModel
 
 private val logger = KotlinLogging.logger {}
 
-val wishlists = ArrayList<WishlistModel>()
+val wishlists = WishlistMemStore()
 
 
 
@@ -68,7 +69,7 @@ fun createWishlist(){
     wishlist.cost = readLine()!!
 
     if(wishlist.title.isNotEmpty() && wishlist.description.isNotEmpty() && wishlist.attendees.isNotEmpty() && wishlist.cost.isNotEmpty()){
-        wishlists.add(wishlist.copy())
+        wishlists.create(wishlist.copy())
         wishlist.id++
         logger.info("""===================================
         |= TITLE: ${wishlist.title}                   
@@ -126,9 +127,7 @@ fun listWishlists(){
         |=       LIST ALL WISHLISTS        =
         |===================================""".trimMargin())
 
-    wishlists.forEach {
-        logger.info { "${it}" }
-    }
+    wishlists.logAll()
 }
 
 fun getId() : Long {
@@ -144,6 +143,6 @@ fun getId() : Long {
 }
 
 fun search(id: Long) : WishlistModel? {
-    var foundWishlist: WishlistModel? = wishlists.find { p -> p.id == id }
+    var foundWishlist: WishlistModel? = wishlists.findOne(id)
     return foundWishlist
 }
