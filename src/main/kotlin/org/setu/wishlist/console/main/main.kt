@@ -1,6 +1,7 @@
 package org.setu.wishlist.console.main
 
 import mu.KotlinLogging
+import org.setu.wishlist.console.controllers.WishlistController
 import org.setu.wishlist.console.models.WishlistMemStore
 import org.setu.wishlist.console.models.WishlistModel
 import org.setu.wishlist.console.views.WishlistView
@@ -9,6 +10,7 @@ private val logger = KotlinLogging.logger {}
 
 val wishlists = WishlistMemStore()
 val wishlistView = WishlistView()
+val controller = WishlistController()
 
 //TODO: add a date to creation of new class
 //TODO: change String to Array and Int
@@ -20,10 +22,10 @@ fun main(args: Array<String>){
     do {
         input = menu()
         when(input){
-            1 -> createWishlist()
-            2 -> updateWishlist()
+            1 -> controller.add()
+            2 -> controller.update()
             3 -> deleteWishlist()
-            4 -> wishlistView.listWishlists(wishlists)
+            4 -> controller.list()
             -1 -> println("exiting, goodbye!")
             else -> println("invalid")
         }
