@@ -3,10 +3,12 @@ package org.setu.wishlist.console.main
 import mu.KotlinLogging
 import org.setu.wishlist.console.models.WishlistMemStore
 import org.setu.wishlist.console.models.WishlistModel
+import org.setu.wishlist.console.views.WishlistView
 
 private val logger = KotlinLogging.logger {}
 
 val wishlists = WishlistMemStore()
+val wishlistView = WishlistView()
 
 //TODO: add a date to creation of new class
 //TODO: change String to Array and Int
@@ -21,7 +23,7 @@ fun main(args: Array<String>){
             1 -> createWishlist()
             2 -> updateWishlist()
             3 -> deleteWishlist()
-            4 -> listWishlists()
+            4 -> wishlistView.listWishlists(wishlists)
             -1 -> println("exiting, goodbye!")
             else -> println("invalid")
         }
@@ -60,68 +62,28 @@ fun createWishlist(){
         |=         CREATE WISHLIST         =
         |===================================""".trimMargin())
 
-    println("title: ")
-    wishlist.title = readLine()!!
-    println("description: ")
-    wishlist.description = readLine()!!
-    println("attendees: ")
-    wishlist.attendees = readLine()!!
-    println("estimated cost: ")
-    wishlist.cost = readLine()!!
-
-    if(wishlist.title.isNotEmpty() && wishlist.description.isNotEmpty() && wishlist.attendees.isNotEmpty() && wishlist.cost.isNotEmpty()){
-        wishlists.create(wishlist.copy())
-        wishlist.id++
-        logger.info("""===================================
-        |= TITLE: ${wishlist.title}                   
-        |= DESCRIPTION: ${wishlist.description}       
-        |= ATTENDEES: ${wishlist.attendees}           
-        |= COST: ${wishlist.cost}                     
-        |===================================""".trimMargin())
+    if(wishlistView.createWishlist(wishlist)){
+        wishlists.create(wishlist)
     }
     else logger.info { "Not created! invalid additions" }
 }
 
 fun updateWishlist(){
 
-    var searchId = getId()
+    var searchId = wishlistView.getId()
     val wishlist = search(searchId)
-
-    val temptitle: String?
-    val tempdescription: String?
-    val tempattendees: String?
-    val tempcost: String?
 
     println("""===================================
         |=         UPDATE WISHLIST         =
         |===================================""".trimMargin())
 
     if(wishlist != null){
-        println("title: ")
-        temptitle = readLine()!!
-        println("description: ")
-        tempdescription = readLine()!!
-        println("attendees: ")
-        tempattendees = readLine()!!
-        println("estimated cost: ")
-        tempcost = readLine()!!
 
-        if (!temptitle.isNullOrEmpty() && !tempdescription.isNullOrEmpty() && !tempattendees.isNullOrEmpty() && !tempcost.isNullOrEmpty()){
-            wishlist.title = temptitle
-            wishlist.description = tempdescription
-            wishlist.attendees = tempattendees
-            wishlist.cost = tempcost
-
-            println("""
-            |===================================
-            |= TITLE: ${wishlist.title}                   
-            |= DESCRIPTION: ${wishlist.description}       
-            |= ATTENDEES: ${wishlist.attendees}           
-            |= COST: ${wishlist.cost}                     
-            |===================================""".trimMargin())
+        if (wishlistView.updateWishlist(wishlist)){
+            wishlists.update(wishlist)
+            logger.info("wishlist updated: $wishlist")
         }
-
-
+        else logger.info { "Wishlist not updated" }
     }
     else println("item not updated")
 }
@@ -131,30 +93,10 @@ fun deleteWishlist(){
         |=         DELETE WISHLIST         =
         |===================================""".trimMargin())
 
-    var searchId = getId()
+    var searchId = wishlistView.getId()
 
     println("wishlist ID: ")
 
-}
-
-fun listWishlists(){
-    println("""===================================
-        |=       LIST ALL WISHLISTS        =
-        |===================================""".trimMargin())
-
-    wishlists.logAll()
-}
-
-fun getId() : Long {
-    var strId : String? // String to hold user input
-    var searchId : Long // Long to hold converted id
-    print("Enter id to Search/Update : ")
-    strId = readLine()!!
-    searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
-        strId.toLong()
-    else
-        -9
-    return searchId
 }
 
 fun search(id: Long) : WishlistModel? {
