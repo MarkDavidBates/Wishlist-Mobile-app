@@ -8,7 +8,8 @@ private val logger = KotlinLogging.logger {}
 
 val wishlists = WishlistMemStore()
 
-
+//TODO: add a date to creation of new class
+//TODO: change String to Array and Int
 
 fun main(args: Array<String>){
     logger.info { "Launching Birthday Wishlist App" }
@@ -86,29 +87,43 @@ fun updateWishlist(){
     var searchId = getId()
     val wishlist = search(searchId)
 
+    val temptitle: String?
+    val tempdescription: String?
+    val tempattendees: String?
+    val tempcost: String?
+
     println("""===================================
         |=         UPDATE WISHLIST         =
         |===================================""".trimMargin())
 
     if(wishlist != null){
         println("title: ")
-        wishlist.title = readLine()!!
+        temptitle = readLine()!!
         println("description: ")
-        wishlist.description = readLine()!!
+        tempdescription = readLine()!!
         println("attendees: ")
-        wishlist.attendees = readLine()!!
+        tempattendees = readLine()!!
         println("estimated cost: ")
-        wishlist.cost = readLine()!!
+        tempcost = readLine()!!
 
-        println("""
-        |===================================
-        |= TITLE: ${wishlist.title}                   
-        |= DESCRIPTION: ${wishlist.description}       
-        |= ATTENDEES: ${wishlist.attendees}           
-        |= COST: ${wishlist.cost}                     
-        |===================================""".trimMargin())
+        if (!temptitle.isNullOrEmpty() && !tempdescription.isNullOrEmpty() && !tempattendees.isNullOrEmpty() && !tempcost.isNullOrEmpty()){
+            wishlist.title = temptitle
+            wishlist.description = tempdescription
+            wishlist.attendees = tempattendees
+            wishlist.cost = tempcost
+
+            println("""
+            |===================================
+            |= TITLE: ${wishlist.title}                   
+            |= DESCRIPTION: ${wishlist.description}       
+            |= ATTENDEES: ${wishlist.attendees}           
+            |= COST: ${wishlist.cost}                     
+            |===================================""".trimMargin())
+        }
+
 
     }
+    else println("item not updated")
 }
 
 fun deleteWishlist(){
