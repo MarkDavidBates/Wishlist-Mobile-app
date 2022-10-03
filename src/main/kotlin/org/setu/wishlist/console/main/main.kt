@@ -18,20 +18,7 @@ val controller = WishlistController()
 fun main(args: Array<String>){
     logger.info { "Launching Birthday Wishlist App" }
 
-    var input: Int
-    do {
-        input = menu()
-        when(input){
-            1 -> controller.add()
-            2 -> controller.update()
-            3 -> deleteWishlist()
-            4 -> controller.list()
-            -1 -> println("exiting, goodbye!")
-            else -> println("invalid")
-        }
-        println()
-    } while(input != -1)
-    logger.info { "Shutting Down" }
+    controller.start()
 
 }
 

@@ -1,6 +1,8 @@
 package org.setu.wishlist.console.controllers
 
 import mu.KotlinLogging
+import org.setu.wishlist.console.main.controller
+import org.setu.wishlist.console.main.deleteWishlist
 import org.setu.wishlist.console.main.search
 import org.setu.wishlist.console.models.WishlistMemStore
 import org.setu.wishlist.console.models.WishlistModel
@@ -18,6 +20,22 @@ class WishlistController {
 
     fun menu() : Int {return wishlistView.menu()}
 
+    fun start(){
+        var input: Int
+        do {
+            input = org.setu.wishlist.console.main.menu()
+            when(input){
+                1 -> add()
+                2 -> update()
+                3 -> deleteWishlist()
+                4 -> list()
+                -1 -> println("exiting, goodbye!")
+                else -> println("invalid")
+            }
+            println()
+        } while(input != -1)
+        logger.info { "Shutting Down" }
+    }
     fun add(){
 
         val wishlist = WishlistModel()
