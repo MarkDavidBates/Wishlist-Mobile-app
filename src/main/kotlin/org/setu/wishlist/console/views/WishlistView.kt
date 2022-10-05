@@ -36,16 +36,36 @@ class WishlistView {
 
     fun createWishlist(wishlist: WishlistModel): Boolean {
 
+        var tempAttendees: String?
+        var array = ArrayList<String>()
+        var arraySize: Int?
+        var i = 0
+
         println("title: ")
         wishlist.title = readLine()!!
         println("description: ")
         wishlist.description = readLine()!!
+        println("number of attendees: ")
+
+        arraySize = readLine()!!.toInt()
+        do {
+            println("name: ")
+            tempAttendees = readLine()!!
+            array.add(tempAttendees)
+            i++
+        } while(i < arraySize)
+
+        for(x in array){
+            println(x)
+        }
+
+        println("ARRAY TEST OVER")
         println("attendees: ")
         wishlist.attendees = readLine()!!
         println("estimated cost: ")
-        wishlist.cost = readLine()!!
+        wishlist.cost = readLine()!!.toInt()
 
-        return wishlist.title.isNotEmpty() && wishlist.description.isNotEmpty() && wishlist.attendees.isNotEmpty() && wishlist.cost.isNotEmpty()
+        return wishlist.title.isNotEmpty() && wishlist.description.isNotEmpty() && wishlist.attendees.isNotEmpty() && wishlist.cost > 0
     }
 
     fun updateWishlist(wishlist: WishlistModel) : Boolean {
@@ -65,10 +85,13 @@ class WishlistView {
             tempcost = readLine()!!
 
             if (!temptitle.isNullOrEmpty() && !tempdescription.isNullOrEmpty() && !tempattendees.isNullOrEmpty() && !tempcost.isNullOrEmpty()) {
+
+
+
                 wishlist.title = temptitle
                 wishlist.description = tempdescription
                 wishlist.attendees = tempattendees
-                wishlist.cost = tempcost
+                wishlist.cost = tempcost.toInt()
                 return true
             }
         }
