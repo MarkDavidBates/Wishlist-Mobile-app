@@ -4,7 +4,6 @@ import org.setu.wishlist.console.models.WishlistMemStore
 import org.setu.wishlist.console.models.WishlistModel
 
 class WishlistView {
-
     fun menu() : Int {
 
         var option : Int
@@ -51,17 +50,16 @@ class WishlistView {
         do {
             println("name: ")
             tempAttendees = readLine()!!
-            array.add(tempAttendees)
-            i++
+            if(!tempAttendees.isNullOrEmpty()){
+                array.add(tempAttendees)
+                i++
+            }
+            else{
+                println("invalid")
+            }
         } while(i < arraySize)
 
-        for(x in array){
-            println(x)
-        }
-
-        println("ARRAY TEST OVER")
-        println("attendees: ")
-        wishlist.attendees = readLine()!!
+        wishlist.attendees = array
         println("estimated cost: ")
         wishlist.cost = readLine()!!.toInt()
 
@@ -71,26 +69,42 @@ class WishlistView {
     fun updateWishlist(wishlist: WishlistModel) : Boolean {
         val temptitle: String?
         val tempdescription: String?
-        val tempattendees: String?
+        //val tempattendees: String?
         val tempcost: String?
+        var tempAttendees: String?
+        var array = ArrayList<String>()
+        var arraySize: Int?
+        var i = 0
+
 
         if(wishlist != null) {
             println("title: ")
             temptitle = readLine()!!
             println("description: ")
             tempdescription = readLine()!!
-            println("attendees: ")
-            tempattendees = readLine()!!
+            println("number of attendees: ")
+
+            arraySize = readLine()!!.toInt()
+            do {
+                println("name: ")
+                tempAttendees = readLine()!!
+                if(!tempAttendees.isNullOrEmpty()){
+                    array.add(tempAttendees)
+                    i++
+                }
+                else{
+                    println("invalid")
+                }
+            } while(i < arraySize)
+
             println("estimated cost: ")
             tempcost = readLine()!!
 
-            if (!temptitle.isNullOrEmpty() && !tempdescription.isNullOrEmpty() && !tempattendees.isNullOrEmpty() && !tempcost.isNullOrEmpty()) {
-
-
+            if (!temptitle.isNullOrEmpty() && !tempdescription.isNullOrEmpty() && !array.isNullOrEmpty() && !tempcost.isNullOrEmpty()) {
 
                 wishlist.title = temptitle
                 wishlist.description = tempdescription
-                wishlist.attendees = tempattendees
+                wishlist.attendees = array
                 wishlist.cost = tempcost.toInt()
                 return true
             }
