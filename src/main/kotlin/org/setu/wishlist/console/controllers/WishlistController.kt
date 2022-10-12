@@ -1,12 +1,14 @@
 package org.setu.wishlist.console.controllers
 
 import mu.KotlinLogging
-import org.setu.wishlist.console.main.controller
 import org.setu.wishlist.console.main.deleteWishlist
-import org.setu.wishlist.console.main.search
 import org.setu.wishlist.console.models.WishlistMemStore
 import org.setu.wishlist.console.models.WishlistModel
 import org.setu.wishlist.console.views.WishlistView
+import java.sql.Connection
+import java.sql.DriverManager
+import java.sql.ResultSet
+import java.sql.Statement
 
 class WishlistController {
 
@@ -21,6 +23,19 @@ class WishlistController {
     fun menu() : Int {return wishlistView.menu()}
 
     fun start(){
+
+        val con: Connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/wishlist", "root", "")
+        val st: Statement = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)
+        val rs = st.executeQuery("select * from data")
+
+        if(rs.next()){
+            logger.info{"successfully signed into database"}
+        }
+        else{
+            logger.info{"failed to sign into database"}
+        }
+
+
         var input: Int
         do {
             input = org.setu.wishlist.console.main.menu()
@@ -69,5 +84,9 @@ class WishlistController {
     fun search(id: Long) : WishlistModel?{
         var foundWishlist: WishlistModel? = wishlists.findOne(id)
         return foundWishlist
+    }
+
+    fun delete(){
+
     }
 }

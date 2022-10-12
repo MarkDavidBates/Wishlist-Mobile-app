@@ -43,40 +43,6 @@ fun menu() : Int {
     return option
 }
 
-fun createWishlist(){
-
-    val wishlist = WishlistModel()
-
-    println("""===================================
-        |=         CREATE WISHLIST         =
-        |===================================""".trimMargin())
-
-    if(wishlistView.createWishlist(wishlist)){
-        wishlists.create(wishlist)
-    }
-    else logger.info { "Not created! invalid additions" }
-}
-
-fun updateWishlist(){
-
-    var searchId = wishlistView.getId()
-    val wishlist = search(searchId)
-
-    println("""===================================
-        |=         UPDATE WISHLIST         =
-        |===================================""".trimMargin())
-
-    if(wishlist != null){
-
-        if (wishlistView.updateWishlist(wishlist)){
-            wishlists.update(wishlist)
-            logger.info("wishlist updated: $wishlist")
-        }
-        else logger.info { "Wishlist not updated" }
-    }
-    else println("item not updated")
-}
-
 fun deleteWishlist(){
     println("""===================================
         |=         DELETE WISHLIST         =
