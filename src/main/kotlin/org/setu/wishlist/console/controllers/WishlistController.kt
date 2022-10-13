@@ -5,10 +5,6 @@ import org.setu.wishlist.console.main.deleteWishlist
 import org.setu.wishlist.console.models.WishlistMemStore
 import org.setu.wishlist.console.models.WishlistModel
 import org.setu.wishlist.console.views.WishlistView
-import java.sql.Connection
-import java.sql.DriverManager
-import java.sql.ResultSet
-import java.sql.Statement
 
 
 class WishlistController {
@@ -16,8 +12,6 @@ class WishlistController {
     val wishlists = WishlistMemStore()
     val wishlistView = WishlistView()
     val logger = KotlinLogging.logger{}
-    val con: Connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/wishlist", "root", "")
-    val st: Statement = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)
 
 
     init {
@@ -27,16 +21,6 @@ class WishlistController {
     fun menu() : Int {return wishlistView.menu()}
 
     fun start(){
-
-        val rs = st.executeQuery("select * from data")
-
-        if(rs.next()){
-            logger.info{"successfully signed into database"}
-        }
-        else{
-            logger.info{"failed to sign into database"}
-        }
-
 
         var input: Int
         do {
@@ -51,7 +35,6 @@ class WishlistController {
             }
             println()
         } while(input != -1)
-        save()
         logger.info { "Shutting Down" }
     }
     fun add(){
@@ -91,26 +74,5 @@ class WishlistController {
 
     fun delete(){
 
-    }
-
-    fun save(){
-        logger.info{"saving data..."}
-
-        try{
-            val count: Int
-            count = st.executeUpdate(
-                "INSERT INTO data (id, title, description, attendees, cost)"
-                        + " VALUES"
-                        + "('" + wishlists + "')"
-            )
-            st.close()
-            println(
-                count.toString() + " rows were inserted"
-            )
-        }
-        catch (e: Exception){
-            logger.info{e}
-            logger.info{"failed to save data"}
-        }
     }
 }

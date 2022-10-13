@@ -26,10 +26,6 @@ class WishlistView {
     }
 
     fun listWishlists(wishlists: WishlistMemStore){
-        println("""===================================
-        |=       LIST ALL WISHLISTS        =
-        |===================================""".trimMargin())
-
         org.setu.wishlist.console.main.wishlists.logAll()
     }
 
