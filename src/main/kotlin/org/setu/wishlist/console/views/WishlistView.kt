@@ -1,6 +1,6 @@
 package org.setu.wishlist.console.views
 
-import org.setu.wishlist.console.models.WishlistMemStore
+import org.setu.wishlist.console.models.WishlistJSONStore
 import org.setu.wishlist.console.models.WishlistModel
 
 class WishlistView {
@@ -25,7 +25,7 @@ class WishlistView {
         return option
     }
 
-    fun listWishlists(wishlists: WishlistMemStore){
+    fun listWishlists(wishlists: WishlistJSONStore){
         org.setu.wishlist.console.main.wishlists.logAll()
     }
 

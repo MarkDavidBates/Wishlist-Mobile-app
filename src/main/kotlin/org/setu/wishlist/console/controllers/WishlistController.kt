@@ -2,14 +2,14 @@ package org.setu.wishlist.console.controllers
 
 import mu.KotlinLogging
 import org.setu.wishlist.console.main.deleteWishlist
-import org.setu.wishlist.console.models.WishlistMemStore
+import org.setu.wishlist.console.models.WishlistJSONStore
 import org.setu.wishlist.console.models.WishlistModel
 import org.setu.wishlist.console.views.WishlistView
 
 
 class WishlistController {
 
-    val wishlists = WishlistMemStore()
+    val wishlists = WishlistJSONStore()
     val wishlistView = WishlistView()
     val logger = KotlinLogging.logger{}
 

@@ -8,9 +8,12 @@ import mu.KotlinLogging
 import org.setu.wishlist.console.helpers.*
 import java.util.*
 
+
+
 interface WishlistStore {
     fun findAll(): List<WishlistModel>
     fun findOne(id: Long): WishlistModel?
     fun create(wishlist: WishlistModel)
     fun update(wishlist: WishlistModel)
+
 }
