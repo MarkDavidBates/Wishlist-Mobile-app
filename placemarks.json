@@ -9,5 +9,17 @@
       "emma"
     ],
     "cost": 3000
+  },
+  {
+    "id": -3713777867379077728,
+    "title": "kart racing",
+    "description": "weekend kart racing with friends",
+    "attendees": [
+      "john",
+      "james",
+      "andrew",
+      "alex"
+    ],
+    "cost": 200
   }
 ]

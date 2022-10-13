@@ -16,7 +16,6 @@ val controller = WishlistController()
 //TODO: change String to Array and Int
 
 fun main(args: Array<String>){
-    logger.info { "Launching Birthday Wishlist App" }
 
     controller.start()
 
@@ -27,12 +26,25 @@ fun menu() : Int {
     var option : Int
     var input: String? = null
 
-    println("Main Menu")
-    println(" 1. Create New Wishlist")
-    println(" 2. Update Existing Wishlist")
-    println(" 3. Delete Wishlist")
-    println(" 4. Show all Wishlists")
-    println("-1. Exit")
+    println("""
+___       __   ___  ________  ___  ___  ___       ___  ________  _________   
+|\  \     |\  \|\  \|\   ____\|\  \|\  \|\  \     |\  \|\   ____\|\___   ___\ 
+\ \  \    \ \  \ \  \ \  \___|\ \  \\\  \ \  \    \ \  \ \  \___|\|___ \  \_| 
+ \ \  \  __\ \  \ \  \ \_____  \ \   __  \ \  \    \ \  \ \_____  \   \ \  \  
+  \ \  \|\__\_\  \ \  \|____|\  \ \  \ \  \ \  \____\ \  \|____|\  \   \ \  \ 
+   \ \____________\ \__\____\_\  \ \__\ \__\ \_______\ \__\____\_\  \   \ \__\
+    \|____________|\|__|\_________\|__|\|__|\|_______|\|__|\_________\   \|__|
+                       \|_________|                       \|_________|        
+                                                                              
+                                                                              
+    """.trimIndent())
+    println("""
+        | 1 | Create New Wishlist      | < |
+        | 2 | Update Existing Wishlist | < |
+        | 3 | Delete Existing Wishlist | < |
+        | 4 | Show All Wishlists       | < |
+        |-1 | Exit Application         | < |
+    """.trimIndent())
     println()
     print("==> ")
     input = readLine()!!
@@ -41,17 +53,6 @@ fun menu() : Int {
     else
         -9
     return option
-}
-
-fun deleteWishlist(){
-    println("""===================================
-        |=         DELETE WISHLIST         =
-        |===================================""".trimMargin())
-
-    var searchId = wishlistView.getId()
-
-    println("wishlist ID: ")
-
 }
 
 fun search(id: Long) : WishlistModel? {

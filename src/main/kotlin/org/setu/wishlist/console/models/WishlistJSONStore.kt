@@ -54,6 +54,10 @@ class WishlistJSONStore : WishlistStore {
         serialize()
     }
 
+    override fun delete(wishlist: WishlistModel) {
+
+    }
+
     internal fun logAll() {
         wishlists.forEach { logger.info("${it}") }
     }

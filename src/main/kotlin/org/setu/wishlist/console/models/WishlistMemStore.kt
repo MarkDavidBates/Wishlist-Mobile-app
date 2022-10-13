@@ -38,6 +38,10 @@ class WishlistMemStore: WishlistStore {
         }
     }
 
+    override fun delete(wishlist: WishlistModel) {
+        TODO("Not yet implemented")
+    }
+
     internal fun logAll() {
         wishlists.forEach { logger.info("${it}") }
     }

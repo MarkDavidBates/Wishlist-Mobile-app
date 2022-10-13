@@ -15,5 +15,5 @@ interface WishlistStore {
     fun findOne(id: Long): WishlistModel?
     fun create(wishlist: WishlistModel)
     fun update(wishlist: WishlistModel)
-
+    fun delete(wishlist: WishlistModel)
 }

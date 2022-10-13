@@ -1,7 +1,6 @@
 package org.setu.wishlist.console.controllers
 
 import mu.KotlinLogging
-import org.setu.wishlist.console.main.deleteWishlist
 import org.setu.wishlist.console.models.WishlistJSONStore
 import org.setu.wishlist.console.models.WishlistModel
 import org.setu.wishlist.console.views.WishlistView
@@ -28,7 +27,7 @@ class WishlistController {
             when(input){
                 1 -> add()
                 2 -> update()
-                3 -> deleteWishlist()
+                3 -> delete()
                 4 -> list()
                 -1 -> println("exiting, goodbye!")
                 else -> println("invalid")
@@ -72,7 +71,17 @@ class WishlistController {
         return foundWishlist
     }
 
-    fun delete(){
+    fun delete() {
+        wishlistView.listWishlists(wishlists)
+        var searchId = wishlistView.getId()
+        val aWishlist = search(searchId)
 
+        if(aWishlist != null) {
+            wishlists.delete(aWishlist)
+            println("Wishlist Deleted...")
+            wishlistView.listWishlists(wishlists)
+        }
+        else
+            println("Wishlist Not Deleted...")
     }
 }

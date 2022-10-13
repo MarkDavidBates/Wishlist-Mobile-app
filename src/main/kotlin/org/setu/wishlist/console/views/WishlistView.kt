@@ -1,5 +1,6 @@
 package org.setu.wishlist.console.views
 
+import org.setu.wishlist.console.main.wishlists
 import org.setu.wishlist.console.models.WishlistJSONStore
 import org.setu.wishlist.console.models.WishlistModel
 
