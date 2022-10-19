@@ -29,8 +29,8 @@ class WishlistController {
                 2 -> update()
                 3 -> delete()
                 4 -> list()
-                -1 -> println("exiting, goodbye!")
-                else -> println("invalid")
+                -1 -> println("| > |   EXITING, GOODBYE :)    | < |")
+                else -> println("| > |         invalid!         | < |")
             }
             println()
         } while(input != -1)
@@ -43,7 +43,7 @@ class WishlistController {
         if(wishlistView.createWishlist(wishlist)){
             wishlists.create(wishlist)
         }
-        else logger.info { "Not created! invalid additions" }
+        else logger.info { "| > |Not created! invalid additions| < |" }
     }
 
     fun list(){
@@ -61,9 +61,8 @@ class WishlistController {
                 wishlists.update(wishlist)
                 logger.info("wishlist updated: $wishlist")
             }
-            else logger.info { "Wishlist not updated" }
         }
-        else println("item not updated")
+        else println("| > |  Wishlist not updated!   | < |")
     }
 
     fun search(id: Long) : WishlistModel?{
@@ -78,10 +77,10 @@ class WishlistController {
 
         if(aWishlist != null) {
             wishlists.delete(aWishlist)
-            println("Wishlist Deleted...")
+            println("| > |    Wishlist Deleted!     | < |")
             wishlistView.listWishlists(wishlists)
         }
         else
-            println("Wishlist Not Deleted...")
+            println("| > |  Wishlist Not Deleted!   | < |")
     }
 }

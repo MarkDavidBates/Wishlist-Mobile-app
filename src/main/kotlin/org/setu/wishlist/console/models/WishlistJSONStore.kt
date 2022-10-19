@@ -5,9 +5,15 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import mu.KotlinLogging
-
-import org.setu.wishlist.console.helpers.*
+import org.setu.wishlist.console.helpers.exists
+import org.setu.wishlist.console.helpers.read
+import org.setu.wishlist.console.helpers.write
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.util.*
+
 
 private val logger = KotlinLogging.logger {}
 
@@ -40,7 +46,10 @@ class WishlistJSONStore : WishlistStore {
     }
 
     override fun create(wishlist: WishlistModel) {
+        val zdtNow = ZonedDateTime.now(ZoneId.of("Etc/UTC"))
+
         wishlist.id = generateRandomId()
+        wishlist.date = zdtNow.toString()
         wishlists.add(wishlist)
         serialize()
     }
@@ -55,7 +64,8 @@ class WishlistJSONStore : WishlistStore {
     }
 
     override fun delete(wishlist: WishlistModel) {
-
+        wishlists.remove(wishlist)
+        serialize()
     }
 
     internal fun logAll() {

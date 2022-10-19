@@ -1,8 +1,12 @@
 package org.setu.wishlist.console.views
 
-import org.setu.wishlist.console.main.wishlists
 import org.setu.wishlist.console.models.WishlistJSONStore
 import org.setu.wishlist.console.models.WishlistModel
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 class WishlistView {
     fun menu() : Int {
@@ -27,7 +31,7 @@ class WishlistView {
     }
 
     fun listWishlists(wishlists: WishlistJSONStore){
-        org.setu.wishlist.console.main.wishlists.logAll()
+        wishlists.logAll()
     }
 
     fun createWishlist(wishlist: WishlistModel): Boolean {
@@ -42,7 +46,6 @@ class WishlistView {
         println("description: ")
         wishlist.description = readLine()!!
         println("number of attendees: ")
-
         arraySize = readLine()!!.toInt()
         do {
             println("name: ")
@@ -66,7 +69,6 @@ class WishlistView {
     fun updateWishlist(wishlist: WishlistModel) : Boolean {
         val temptitle: String?
         val tempdescription: String?
-        //val tempattendees: String?
         val tempcost: String?
         var tempAttendees: String?
         var array = ArrayList<String>()

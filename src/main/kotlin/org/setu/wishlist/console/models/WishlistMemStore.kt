@@ -1,6 +1,8 @@
 package org.setu.wishlist.console.models
 
 import mu.KotlinLogging
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 private val logger = KotlinLogging.logger {}
 var lastId = 0L
@@ -23,7 +25,13 @@ class WishlistMemStore: WishlistStore {
     }
 
     override fun create(wishlist: WishlistModel) {
+        val zdtNow = ZonedDateTime.now(ZoneId.of("Etc/UTC"))
+        val date = zdtNow.toString()
+
+        println(date)
+
         wishlist.id = getId()
+        wishlist.date = date
         wishlists.add(wishlist)
         logAll()
     }
@@ -39,7 +47,7 @@ class WishlistMemStore: WishlistStore {
     }
 
     override fun delete(wishlist: WishlistModel) {
-        TODO("Not yet implemented")
+        wishlists.remove(wishlist)
     }
 
     internal fun logAll() {

@@ -8,7 +8,8 @@
       "conor",
       "emma"
     ],
-    "cost": 3000
+    "cost": 3000,
+    "date": ""
   },
   {
     "id": -3713777867379077728,
@@ -20,6 +21,51 @@
       "andrew",
       "alex"
     ],
-    "cost": 200
+    "cost": 200,
+    "date": ""
+  },
+  {
+    "id": -936827372482512637,
+    "title": "test title",
+    "description": "test description",
+    "attendees": [
+      "test attendee"
+    ],
+    "cost": 16,
+    "date": ""
+  },
+  {
+    "id": -8281075922843877688,
+    "title": "Birthday Dinner at resturant",
+    "description": "a dinner at a resturant down town",
+    "attendees": [
+      "jill",
+      "james",
+      "emma",
+      "eric",
+      "abbey"
+    ],
+    "cost": 200,
+    "date": ""
+  },
+  {
+    "id": -4609426448724401634,
+    "title": "test1",
+    "description": "test2",
+    "attendees": [
+      "name"
+    ],
+    "cost": 400,
+    "date": ""
+  },
+  {
+    "id": -5357788068205985457,
+    "title": "1",
+    "description": "1",
+    "attendees": [
+      "1"
+    ],
+    "cost": 1,
+    "date": "2022-10-19T09:13:37.046587700Z[Etc/UTC]"
   }
 ]

@@ -5,6 +5,9 @@ import org.setu.wishlist.console.controllers.WishlistController
 import org.setu.wishlist.console.models.WishlistMemStore
 import org.setu.wishlist.console.models.WishlistModel
 import org.setu.wishlist.console.views.WishlistView
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
@@ -12,8 +15,7 @@ val wishlists = WishlistMemStore()
 val wishlistView = WishlistView()
 val controller = WishlistController()
 
-//TODO: add a date to creation of new class
-//TODO: change String to Array and Int
+//TODO: clean up code and add validation
 
 fun main(args: Array<String>){
 
@@ -39,23 +41,18 @@ ___       __   ___  ________  ___  ___  ___       ___  ________  _________
                                                                               
     """.trimIndent())
     println("""
-        | 1 | Create New Wishlist      | < |
-        | 2 | Update Existing Wishlist | < |
-        | 3 | Delete Existing Wishlist | < |
-        | 4 | Show All Wishlists       | < |
+        | 1 | Create New Wishlist      | < |    | 3 | Delete Existing Wishlist | < |
+        | 2 | Update Existing Wishlist | < |    | 4 | Show All Wishlists       | < |
+        
+        
         |-1 | Exit Application         | < |
     """.trimIndent())
     println()
-    print("==> ")
+    print("| > | ==> ")
     input = readLine()!!
     option = if (input.toIntOrNull() != null && !input.isEmpty())
         input.toInt()
     else
         -9
     return option
-}
-
-fun search(id: Long) : WishlistModel? {
-    var foundWishlist: WishlistModel? = wishlists.findOne(id)
-    return foundWishlist
 }
