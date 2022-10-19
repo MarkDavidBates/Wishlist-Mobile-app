@@ -26,12 +26,9 @@ class WishlistMemStore: WishlistStore {
 
     override fun create(wishlist: WishlistModel) {
         val zdtNow = ZonedDateTime.now(ZoneId.of("Etc/UTC"))
-        val date = zdtNow.toString()
-
-        println(date)
 
         wishlist.id = getId()
-        wishlist.date = date
+        wishlist.date = zdtNow.toString()
         wishlists.add(wishlist)
         logAll()
     }

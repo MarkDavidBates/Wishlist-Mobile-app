@@ -36,6 +36,7 @@ class WishlistController {
         } while(input != -1)
         logger.info { "Shutting Down" }
     }
+
     fun add(){
 
         val wishlist = WishlistModel()

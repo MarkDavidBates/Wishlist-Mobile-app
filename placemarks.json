@@ -25,16 +25,6 @@
     "date": ""
   },
   {
-    "id": -936827372482512637,
-    "title": "test title",
-    "description": "test description",
-    "attendees": [
-      "test attendee"
-    ],
-    "cost": 16,
-    "date": ""
-  },
-  {
     "id": -8281075922843877688,
     "title": "Birthday Dinner at resturant",
     "description": "a dinner at a resturant down town",
@@ -49,23 +39,15 @@
     "date": ""
   },
   {
-    "id": -4609426448724401634,
-    "title": "test1",
-    "description": "test2",
+    "id": 4448809613867920169,
+    "title": "hello",
+    "description": "goodbye",
     "attendees": [
-      "name"
+      "a",
+      "b",
+      "c"
     ],
-    "cost": 400,
-    "date": ""
-  },
-  {
-    "id": -5357788068205985457,
-    "title": "1",
-    "description": "1",
-    "attendees": [
-      "1"
-    ],
-    "cost": 1,
-    "date": "2022-10-19T09:13:37.046587700Z[Etc/UTC]"
+    "cost": 600,
+    "date": "2022-10-19T20:56:27.818971400Z[Etc/UTC]"
   }
 ]

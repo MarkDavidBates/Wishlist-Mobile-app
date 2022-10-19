@@ -82,7 +82,6 @@ class WishlistView {
             println("description: ")
             tempdescription = readLine()!!
             println("number of attendees: ")
-
             arraySize = readLine()!!.toInt()
             do {
                 println("name: ")

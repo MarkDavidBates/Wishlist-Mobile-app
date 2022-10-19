@@ -17,7 +17,7 @@ import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
-val JSON_FILE = "placemarks.json"
+val JSON_FILE = "wishlists.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<WishlistModel>>() {}.type
 
