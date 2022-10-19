@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.setu.wishlist.console.models.WishlistModelTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2022-10-19T15:13:46" hostname="LAPTOP-B63DKO0J" time="0.081">
+  <properties/>
+  <testcase name="getAttendees()" classname="org.setu.wishlist.console.models.WishlistModelTest" time="0.052"/>
+  <testcase name="getCost()" classname="org.setu.wishlist.console.models.WishlistModelTest" time="0.002"/>
+  <testcase name="getId()" classname="org.setu.wishlist.console.models.WishlistModelTest" time="0.001"/>
+  <testcase name="setId()" classname="org.setu.wishlist.console.models.WishlistModelTest" time="0.002"/>
+  <testcase name="setDescription()" classname="org.setu.wishlist.console.models.WishlistModelTest" time="0.001"/>
+  <testcase name="setAttendees()" classname="org.setu.wishlist.console.models.WishlistModelTest" time="0.001"/>
+  <testcase name="setTitle()" classname="org.setu.wishlist.console.models.WishlistModelTest" time="0.002"/>
+  <testcase name="getDescription()" classname="org.setu.wishlist.console.models.WishlistModelTest" time="0.002"/>
+  <testcase name="getTitle()" classname="org.setu.wishlist.console.models.WishlistModelTest" time="0.003"/>
+  <testcase name="setCost()" classname="org.setu.wishlist.console.models.WishlistModelTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

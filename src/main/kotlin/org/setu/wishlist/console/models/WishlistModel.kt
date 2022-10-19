@@ -1,8 +1,4 @@
 package org.setu.wishlist.console.models
-import java.time.LocalDate;
-import java.time.ZonedDateTime
-import java.util.Date
-import kotlin.collections.ArrayList
 
 //TODO: add date
 
